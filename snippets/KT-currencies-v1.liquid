@@ -1,0 +1,24 @@
+
+<script>
+  res = jQuery.ajax({
+    url: "https://kilatechapps.b-cdn.net/media/KT-currency.js",
+    async: false,
+    cache: false,
+  });
+  KTCurrency = JSON.parse(res.responseText);
+  KTCurrency.convert = function(amount, from, to) {return (amount * this.rates[to]) / this.rates[from]};
+</script>
+
+{{ "KT-jquery.currencies.min.js" | asset_url | script_tag }}
+
+<script id="KILATECH-CC-Main">
+  // Get shop currency - USD
+  var shopCurrency = '{{ shop.currency }}';
+
+  /* Update current using format in KTCurrency object in the case of merchant has customized the currency format */
+  KTCurrency.moneyFormats[shopCurrency].money_with_currency_format = {{ shop.money_with_currency_format | strip_html | json }};
+  KTCurrency.moneyFormats[shopCurrency].money_format = {{ shop.money_format | strip_html | json }};
+
+  /* Cookie currency = undefined or "value" */
+  var cookieCurrency = KTCurrency.cookie.read();
+</script>

@@ -1,0 +1,10 @@
+{% comment %}
+  The contents of the cart.liquid template can be found in /sections/cart-template.liquid
+{% endcomment %}
+
+{% section 'cart-template' %}
+ {% assign pageurl = content_for_header| split:'"pageurl":"' | last | split:'"' | first %}
+{% assign Shopdomain = pageurl | split : "\/" | first %}
+<script id='editcartmlvedascript' mlveda='{{Shopdomain}}' src= 'https://currency-switcher-app.myshopify.com/apps/EditCart/editcartmlvedaproxy.js'></script>
+{{ 'mlvedaeditcart.css' | asset_url | stylesheet_tag }}
+{% include 'mlveda-optionselection' %}

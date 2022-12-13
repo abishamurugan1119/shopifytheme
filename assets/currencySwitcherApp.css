@@ -1,0 +1,69 @@
+.grid-item.large--one-half.text-center.large--text-right {
+    width: 100%;
+}
+
+.grid-item.large--one-half.text-center.large--text-right .currencyContainer{
+    padding:0;
+}
+
+.currencyContainer {
+    padding: 10px 0
+}
+
+.header-bar__module .currencyContainer{
+    padding:0;
+    padding-top:10px;
+}
+
+.site-header__search-cart-wrapper {
+    padding: 10px 0;
+}
+
+.site-header__section--button {
+    display: flex;
+}
+
+.site-header__section--button .currencyContainer {
+    padding: 12px 0;
+    line-height: 5em;
+}
+
+.currencyContainer {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+select.currencySelect {
+    width: 100px;
+}
+
+.select2-results__option {
+    padding: 10px;
+}
+
+span.select2-selection__rendered {
+    text-align: left;
+}
+
+.currencyContainerFloat {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    right: auto;
+    z-index: 100000;
+}
+
+#currencySelect .select2-container{
+    font-size:15px;
+    font-weight:600;
+    font-family:"Helvetica Neue",Arial;
+}
+
+ul.select2-results__options {
+    font-family: "Helvetica Neue",Arial;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+

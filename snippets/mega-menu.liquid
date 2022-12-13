@@ -1,0 +1,7 @@
+{% layout none %}
+{% for link in linklists.main-menu.links %}
+	{% assign path = link.title %}
+	{% if path  ==  "Catalog" %}
+    {{ forloop.index }}
+	{% endif %}
+{% endfor %}

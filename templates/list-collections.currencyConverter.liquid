@@ -1,0 +1,203 @@
+{% layout none %}
+<script>
+jQuery(document).ready(function ($) {
+   var spanClass="money";
+   var price;
+   $.ajax({
+       method: 'GET', 
+       url:'https://cdn.shopify.com/s/files/1/0300/6735/9884/t/1/assets/selectedCountry.json?v=1586841690', 
+       success: function(response){ 
+           var selected;  
+           var themeSetting=response['themeSetting'];
+           var position=response['position'];
+           var status=response['status'];
+           var shopCurrency=response['shopCurrency'];
+          
+           delete response['themeSetting'];
+           delete response['position'];
+           delete response['status'];
+           delete response['shopCurrency'];
+          
+           if(position=="top"){
+           var a=$("a[href='/cart']");
+               if ($('.currencyContainer').length == 0) { 
+                   if(a.hasClass("cart-page-link")){
+                   a.parent(".header-bar__module").last().append("<div id='currencySelect' class='currencyContainer'></div>");
+                   }
+                   else{
+                   a.parent().append("<div id='currencySelect' class='currencyContainer'></div>");
+                   }
+               }
+               if ($('.currencyContainer').length > 0) {
+                   var doublyWrapper = '.currencyContainer';
+               } 
+           }
+
+           if(position=="float"){
+               if ($('.currencyContainerFloat').length == 0) { 
+                   $("body").append("<div id='currencySelect' class='currencyContainerFloat'></div>");
+               }
+               if ($('.currencyContainerFloat').length > 0) {
+                   var doublyWrapper = '.currencyContainerFloat';
+               } 
+           }
+
+           if(position=="manual"){
+               if ($('.customCurrencyContainer').length > 0) {
+                   var doublyWrapper = '.customCurrencyContainer';
+               } 
+           }         
+         
+           var selectOption ='<select class="currencySelect">';
+
+          
+         
+           $.each(response, function( key, value ) {
+               selectOption +="<option value='"+key+"'>"+key+"</option>";
+           });
+
+
+          
+           selectOption +="</select>";
+
+           $(doublyWrapper).append(selectOption);
+
+           if(themeSetting=="layered" && status=="active"){
+                $("body").append("<div class='layeredSwatchContainer'></div>");
+                var swatchContent='';
+                $.each(response, function( key, value ) {  
+                    symbol=value.split("-");
+                    swatchContent +='<div class="layeredSwatches"><div class="currencySwatches"><input type="radio" class="currencySelectSwatch" name="currecnySwatch" id="'+key+'" value="'+key+'">';
+                    swatchContent +='<label class="swatchSelect" for="'+key+'">'+symbol[1]+'</label></div></div>';
+                });
+                $(".layeredSwatchContainer").append(swatchContent);
+                $(".currencySelect").attr("style","display:none");
+           }         
+
+           if ($.cookie('currencySwitcherApp')) {
+               var getCookie=$.cookie("currencySwitcherApp");
+           }
+           else{
+               getCookie=shopCurrency;
+           }
+           
+           $("#currencySelect option[value='"+getCookie+"']").attr('selected', 'selected');
+          
+          
+            $(".currencySelectSwatch").on('click',function(){
+                var temp= $('.currencySelectSwatch:checked').val(); 
+                $(".currencySelect option:selected").attr("selected",false);
+                $(".currencySelect option[value=" + temp + "]").attr("selected","selected");
+              
+                if ($('label.selected').length>0) { 
+                    $("label.swatchSelect").removeClass("selected");
+                }
+                var i=1,j=1;
+                var n=$('.layeredSwatches').length;
+                $.each(response, function( key, value ) {  
+                    symbol=value.split("-");
+                    
+                    if(i<n){                      
+                        $("#"+key).next('label.swatchSelect').attr("style","padding-left:49px;padding-right:11px;text-align:center;z-index:"+j+";");
+                        j++;
+                    }
+                    else{
+                        j--;
+                        $("#"+key).next('label.swatchSelect').attr("style","padding-left:11px;padding-right:49px;text-align:center;z-index:"+j+";");
+                    }
+                    if(temp==key){
+                        i=n;
+                        j=n;
+                        var resultString=symbol[1].concat(" ");
+                        $("#"+key).next('label.swatchSelect').text(key+" "+symbol[1]);
+                        $("#"+key).next('label.swatchSelect').addClass("selected");
+                        $("#"+key).next('label.swatchSelect').attr("style","padding-left:23px;padding-right:23px;text-align:center;z-index:"+i+";");
+                    }
+                    else{
+                        $("#"+key).next('label.swatchSelect').text(symbol[1]);
+                    }
+
+                });
+                $(".currencySelect").trigger("change");
+            });
+
+            $("input[name=currecnySwatch][value=" + getCookie + "]").attr('checked', 'checked').trigger('click');
+
+            if(themeSetting=="flag" && status=="active")
+            {
+                $(".currencySelect").select2({
+                    minimumResultsForSearch: -1,
+                    templateResult: formatState,
+                    templateSelection: formatState
+                });
+
+                function formatState (state) {
+                    
+                    if (!state.id) { return state.text; }
+                    if(themeSetting=="flag"){
+                        var state = $(
+                        '<span  class="flag-icon flag-icon-'+(state.element.value.slice(0, -1)).toLowerCase() +'" style="margin-right: 10px;font-size: 20px;line-height: 24px;" id="iconShape"></span><span>' + state.text + '</span>'
+                        );
+                    }
+                    return state;
+                }
+            }
+
+
+
+           if ($.cookie('currencySwitcherApp')) {
+               var cookie=$.cookie("currencySwitcherApp");
+               selected =response[cookie];
+               insertAttr(selected);
+           }
+           else{
+               selected=response[getCookie];
+               insertAttr(selected);
+               $.cookie("currencySwitcherApp",getCookie,{path:'/'});
+           }
+
+           $('select.currencySelect').on('change',function() {
+               selected=response[$(this).val()];
+               insertAttr(selected);
+               $.cookie("currencySwitcherApp",$(this).val(),{path:'/'});
+           });
+   
+           $(document).ajaxComplete(function() {
+               setTimeout(function() {
+                   if(selected!=undefined){
+                       insertAttr(selected);
+                   }
+               },10);
+           });
+
+         
+       }
+   });
+
+  
+   function insertAttr(selected){
+       if($("span."+spanClass).length>0){
+           $("span."+spanClass).each(function(){
+               if($(this).attr("data-inr")){
+                   price=$(this).data("inr");
+               }
+               else{
+                   price=($(this).html().replace(/[^0-9]/g, "")) / 100;
+                   $(this).attr("data-inr",price);
+               }
+               result=convert(selected,price);
+               $(this).html(result);
+              
+           });
+       }
+   }
+
+   function convert(selected,price){
+       var currencySymbol = selected.split("-");
+       var converted=price*currencySymbol[0];
+       var convertCurrency = currencySymbol[1].concat(converted.toFixed(2));
+      return convertCurrency;
+   }
+ 
+});
+</script>

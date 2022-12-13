@@ -1,0 +1,22 @@
+<div class="ProductItem ">
+  <div class="ProductItem__Wrapper">
+    <a href="/collections/shop-all-products/products/13-inch-macbook-air-m2" class="ProductItem__ImageWrapper ProductItem__ImageWrapper--withAlternateImage">
+      <div class="AspectRatio AspectRatio--withFallback AspectRatio1" >
+      <img class="ProductItem__Image ProductItem__Image--alternate Image--fadeIn lazyautosizes Image--lazyLoaded Image1" src= "{{ product.featured_image | img_url: '' }}">
+      <img class="ProductItem__Image Image--fadeIn lazyautosizes Image--lazyLoaded product_image" src= "{{ product.media[1] | img_url: '' }}">
+      <span class="Image__Loader"></span>
+      </div>
+
+</a><div class="ProductItem__Info ProductItem__Info--center">
+      <h2 class="ProductItem__Title Heading">
+          <a href="/collections/shop-all-products/products/13-inch-macbook-air-m2">{{ product.title }}</a>
+        </h2><div class="ProductItem__PriceList  Heading">
+          <span class="ProductItem__Price Price Text--subdued">{{ product.price | money }}</span>
+          <span class="price-item__label price-item__label--sale" aria-hidden="true">Sale</span>
+         </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+

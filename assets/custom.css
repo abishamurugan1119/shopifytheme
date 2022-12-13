@@ -1,0 +1,62 @@
+<style>
+ .bg_image{
+       background-size:cover;
+    }
+  
+  .hero__inner {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 100px 0;
+    z-index: 2;
+    top:0;
+    }
+  
+  .owl-carousel .owl-item img {
+   display: block;
+   max-width: 100%;
+   height: 100%;
+   object-fit: cover;
+  }
+  .h2{
+  padding:10px 0;
+  }
+  .section-header {
+    margin-bottom: 20px;
+  }
+  
+  .owl-theme .owl-nav {
+    font-size: xxx-large;
+    color:white;
+   }
+  
+  .owl-prev{
+    left:0;
+    position:absolute;
+    bottom:35%;
+  }
+  .owl-next{
+    right:0;
+    position:absolute;
+    bottom:35%;
+  }
+  
+  @media screen and (min-width: 769px) {
+  .image{display:none;}
+  }
+  
+  @media screen and (max-width: 768px) {
+    .bg_image{background:none!important;}
+    }
+  
+  .image{
+  min-height:200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  }
+  
+  .checkbox {
+    position: absolute;
+    padding:0;
+  }
+  </style>
