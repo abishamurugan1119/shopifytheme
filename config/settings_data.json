@@ -26,12 +26,28 @@
       "header": {
         "type": "header",
         "settings": {
+          "align_logo": "left",
+          "logo_max_width": 100,
+          "main_linklist": "main-menu",
+          "message": false,
+          "home_page_only": true,
+          "message_text": "Announce something here",
+          "message_link": "",
+          "color_bg": "#7796a8",
+          "color_text": "#fff"
         }
       },
       "hero": {
         "type": "hero",
         "settings": {
-          "text_size": "large"
+          "alignment": "center",
+          "hero_layout": "full_width",
+          "hero_size": "medium",
+          "text_size": "large",
+          "title": "Image with text overlay",
+          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+          "button_label": "",
+          "button_link": ""
         }
       },
       "slideshow": {
@@ -40,11 +56,21 @@
           "slideshow-0": {
             "type": "image",
             "settings": {
+              "alignment": "center center",
+              "slide_title": "Image slide",
+              "subheading": "Tell your brand's story through images",
+              "button_label": "",
+              "button_link": ""
             }
           },
           "slideshow-1": {
             "type": "image",
             "settings": {
+              "alignment": "center center",
+              "slide_title": "Image slide",
+              "subheading": "Tell your brand's story through images",
+              "button_label": "",
+              "button_link": ""
             }
           }
         },
@@ -53,17 +79,33 @@
           "slideshow-1"
         ],
         "settings": {
+          "slideshow_height": "adapt",
+          "text_size": "medium",
+          "text_alignment": "center center",
+          "show_overlay": true,
+          "autorotate": false,
+          "autorotate_speed": 5
         }
       },
       "featured-collections": {
         "type": "collection",
         "settings": {
-          "collection": "frontpage"
+          "title": "Featured collection",
+          "collection": "frontpage",
+          "grid": 3,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
         }
       },
       "feature-row": {
         "type": "feature-row",
         "settings": {
+          "layout": "left",
+          "title": "Image with text",
+          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+          "button_label": "",
+          "button_link": ""
         }
       },
       "footer": {
@@ -72,16 +114,21 @@
           "link_list": {
             "type": "link_list",
             "settings": {
+              "title": "Quick links",
+              "menu": "footer"
             }
           },
           "text": {
             "type": "text",
             "settings": {
+              "title": "Talk about your business",
+              "text": "<p>Share store details, promotions, or brand content with your customers.<\/p>"
             }
           },
           "newsletter": {
             "type": "newsletter",
             "settings": {
+              "title": "Newsletter"
             }
           }
         },
@@ -91,6 +138,69 @@
           "newsletter"
         ],
         "settings": {
+          "show_payment_icons": false,
+          "color_footer_bg": "#F5F5F5",
+          "color_footer_text": "#3d4246"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": 4,
+          "rows": 2,
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": true,
+          "tags_enable": true
+        }
+      },
+      "9995d5d9-50af-43f8-b3e0-cf3426f8ac70": {
+        "type": "custom",
+        "blocks": {
+          "9995d5d9-50af-43f8-b3e0-cf3426f8ac70-167099428699bddcf7-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/customer-support-staff-ready-for-work.jpg",
+              "slider_text_color": "#F5F5F5",
+              "description_text_color": "#3d4246",
+              "text_show": false,
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          },
+          "9995d5d9-50af-43f8-b3e0-cf3426f8ac70-167099428699bddcf7-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/makeup-powders-and-brush.jpg",
+              "slider_text_color": "#F5F5F5",
+              "description_text_color": "#3d4246",
+              "text_show": false,
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          },
+          "9995d5d9-50af-43f8-b3e0-cf3426f8ac70-167099428699bddcf7-2": {
+            "type": "image",
+            "settings": {
+              "slider_text_color": "#F5F5F5",
+              "description_text_color": "#3d4246",
+              "text_show": false,
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "9995d5d9-50af-43f8-b3e0-cf3426f8ac70-167099428699bddcf7-0",
+          "9995d5d9-50af-43f8-b3e0-cf3426f8ac70-167099428699bddcf7-1",
+          "9995d5d9-50af-43f8-b3e0-cf3426f8ac70-167099428699bddcf7-2"
+        ],
+        "settings": {
+          "title": "tittle"
         }
       }
     },
@@ -98,7 +208,8 @@
       "hero",
       "featured-collections",
       "feature-row",
-      "slideshow"
+      "slideshow",
+      "9995d5d9-50af-43f8-b3e0-cf3426f8ac70"
     ]
   },
   "presets": {
