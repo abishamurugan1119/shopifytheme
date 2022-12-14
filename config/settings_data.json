@@ -87,17 +87,6 @@
           "autorotate_speed": 5
         }
       },
-      "featured-collections": {
-        "type": "collection",
-        "settings": {
-          "title": "Featured collection",
-          "collection": "frontpage",
-          "grid": 3,
-          "rows": 2,
-          "show_vendor": false,
-          "show_view_all": false
-        }
-      },
       "feature-row": {
         "type": "feature-row",
         "settings": {
@@ -206,10 +195,6 @@
       }
     },
     "content_for_index": [
-      "hero",
-      "featured-collections",
-      "feature-row",
-      "slideshow",
       "9995d5d9-50af-43f8-b3e0-cf3426f8ac70"
     ]
   },
